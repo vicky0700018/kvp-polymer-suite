@@ -17,6 +17,7 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
 import { Route as AdminSalesIndexRouteImport } from './routes/admin.sales.index'
+import { Route as AdminSalesCreateRouteImport } from './routes/admin.sales.create'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -58,6 +59,11 @@ const AdminSalesIndexRoute = AdminSalesIndexRouteImport.update({
   path: '/admin/sales/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminSalesCreateRoute = AdminSalesCreateRouteImport.update({
+  id: '/admin/sales/create',
+  path: '/admin/sales/create',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -67,6 +73,7 @@ export interface FileRoutesByFullPath {
   '/services': typeof ServicesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/sales/create': typeof AdminSalesCreateRoute
   '/admin/sales/': typeof AdminSalesIndexRoute
 }
 export interface FileRoutesByTo {
@@ -77,6 +84,7 @@ export interface FileRoutesByTo {
   '/services': typeof ServicesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/sales/create': typeof AdminSalesCreateRoute
   '/admin/sales': typeof AdminSalesIndexRoute
 }
 export interface FileRoutesById {
@@ -88,6 +96,7 @@ export interface FileRoutesById {
   '/services': typeof ServicesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/sales/create': typeof AdminSalesCreateRoute
   '/admin/sales/': typeof AdminSalesIndexRoute
 }
 export interface FileRouteTypes {
@@ -100,6 +109,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/admin/dashboard'
     | '/admin/login'
+    | '/admin/sales/create'
     | '/admin/sales/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -110,6 +120,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/admin/dashboard'
     | '/admin/login'
+    | '/admin/sales/create'
     | '/admin/sales'
   id:
     | '__root__'
@@ -120,6 +131,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/admin/dashboard'
     | '/admin/login'
+    | '/admin/sales/create'
     | '/admin/sales/'
   fileRoutesById: FileRoutesById
 }
@@ -131,6 +143,7 @@ export interface RootRouteChildren {
   ServicesRoute: typeof ServicesRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminLoginRoute: typeof AdminLoginRoute
+  AdminSalesCreateRoute: typeof AdminSalesCreateRoute
   AdminSalesIndexRoute: typeof AdminSalesIndexRoute
 }
 
@@ -192,6 +205,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminSalesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/sales/create': {
+      id: '/admin/sales/create'
+      path: '/admin/sales/create'
+      fullPath: '/admin/sales/create'
+      preLoaderRoute: typeof AdminSalesCreateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -203,6 +223,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesRoute: ServicesRoute,
   AdminDashboardRoute: AdminDashboardRoute,
   AdminLoginRoute: AdminLoginRoute,
+  AdminSalesCreateRoute: AdminSalesCreateRoute,
   AdminSalesIndexRoute: AdminSalesIndexRoute,
 }
 export const routeTree = rootRouteImport
