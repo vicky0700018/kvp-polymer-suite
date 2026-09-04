@@ -17,6 +17,7 @@ import { Route as ServicesRouteImport } from './routes/services'
 import { Route as AdminDashboardRouteImport } from './routes/admin.dashboard'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
 import { Route as AdminPurchasesIndexRouteImport } from './routes/admin.purchases.index'
+import { Route as AdminPurchasesCreateRouteImport } from './routes/admin.purchases.create'
 import { Route as AdminSalesIndexRouteImport } from './routes/admin.sales.index'
 import { Route as AdminSalesCreateRouteImport } from './routes/admin.sales.create'
 
@@ -60,6 +61,11 @@ const AdminPurchasesIndexRoute = AdminPurchasesIndexRouteImport.update({
   path: '/admin/purchases/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminPurchasesCreateRoute = AdminPurchasesCreateRouteImport.update({
+  id: '/admin/purchases/create',
+  path: '/admin/purchases/create',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminSalesIndexRoute = AdminSalesIndexRouteImport.update({
   id: '/admin/sales/',
   path: '/admin/sales/',
@@ -79,6 +85,7 @@ export interface FileRoutesByFullPath {
   '/services': typeof ServicesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/purchases/create': typeof AdminPurchasesCreateRoute
   '/admin/sales/create': typeof AdminSalesCreateRoute
   '/admin/purchases/': typeof AdminPurchasesIndexRoute
   '/admin/sales/': typeof AdminSalesIndexRoute
@@ -91,6 +98,7 @@ export interface FileRoutesByTo {
   '/services': typeof ServicesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/purchases/create': typeof AdminPurchasesCreateRoute
   '/admin/sales/create': typeof AdminSalesCreateRoute
   '/admin/purchases': typeof AdminPurchasesIndexRoute
   '/admin/sales': typeof AdminSalesIndexRoute
@@ -104,6 +112,7 @@ export interface FileRoutesById {
   '/services': typeof ServicesRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/login': typeof AdminLoginRoute
+  '/admin/purchases/create': typeof AdminPurchasesCreateRoute
   '/admin/sales/create': typeof AdminSalesCreateRoute
   '/admin/purchases/': typeof AdminPurchasesIndexRoute
   '/admin/sales/': typeof AdminSalesIndexRoute
@@ -118,6 +127,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/admin/dashboard'
     | '/admin/login'
+    | '/admin/purchases/create'
     | '/admin/sales/create'
     | '/admin/purchases/'
     | '/admin/sales/'
@@ -130,6 +140,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/admin/dashboard'
     | '/admin/login'
+    | '/admin/purchases/create'
     | '/admin/sales/create'
     | '/admin/purchases'
     | '/admin/sales'
@@ -142,6 +153,7 @@ export interface FileRouteTypes {
     | '/services'
     | '/admin/dashboard'
     | '/admin/login'
+    | '/admin/purchases/create'
     | '/admin/sales/create'
     | '/admin/purchases/'
     | '/admin/sales/'
@@ -155,6 +167,7 @@ export interface RootRouteChildren {
   ServicesRoute: typeof ServicesRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminLoginRoute: typeof AdminLoginRoute
+  AdminPurchasesCreateRoute: typeof AdminPurchasesCreateRoute
   AdminSalesCreateRoute: typeof AdminSalesCreateRoute
   AdminPurchasesIndexRoute: typeof AdminPurchasesIndexRoute
   AdminSalesIndexRoute: typeof AdminSalesIndexRoute
@@ -218,6 +231,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminPurchasesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/purchases/create': {
+      id: '/admin/purchases/create'
+      path: '/admin/purchases/create'
+      fullPath: '/admin/purchases/create'
+      preLoaderRoute: typeof AdminPurchasesCreateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/sales/': {
       id: '/admin/sales/'
       path: '/admin/sales'
@@ -243,6 +263,7 @@ const rootRouteChildren: RootRouteChildren = {
   ServicesRoute: ServicesRoute,
   AdminDashboardRoute: AdminDashboardRoute,
   AdminLoginRoute: AdminLoginRoute,
+  AdminPurchasesCreateRoute: AdminPurchasesCreateRoute,
   AdminSalesCreateRoute: AdminSalesCreateRoute,
   AdminPurchasesIndexRoute: AdminPurchasesIndexRoute,
   AdminSalesIndexRoute: AdminSalesIndexRoute,
